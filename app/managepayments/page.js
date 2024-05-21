@@ -91,7 +91,8 @@ const ManagePayments = () => {
                 const booking = bookings[payment.booking_id._id];
                 return booking ? (
                   <tr key={payment.id}>
-                    <td>{booking.activityData.eventName}</td>
+                    
+                    <td>{activeTab === 'event' ? booking.activityData.eventName : booking.activityData.tourName}</td>
                     <td>SAR{booking.activityData.price}</td>
                     <td>SAR{payment.commission}</td>
                     <td>{payment.paymentStatus == true ? 'Payment Completed' : 'Pending'}</td>
