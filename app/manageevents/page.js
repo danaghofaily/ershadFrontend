@@ -125,7 +125,6 @@ const ManageEvents = () => {
           <thead>
             <tr>
               <th>Event Name</th>
-              <th>Description</th>
               <th>Location</th>
               <th>Date</th>
               <th>Price</th>
@@ -137,7 +136,6 @@ const ManageEvents = () => {
             {events.map((event, index) => (
               <tr key={event.id}>
                 <td>{event.eventName}</td>
-                <td>{event.desc}</td>
                 <td>{event.location}</td>
                 <td>{event.date}</td>
                 <td>SAR{event.price}</td>

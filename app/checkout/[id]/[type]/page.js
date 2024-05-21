@@ -146,56 +146,59 @@ const addPayment = async (newBookingId) => { // Accept the booking id as a param
   }
 };
 
-  return (
-    <>
-      <div className="checkout-container">
-        <div className="summary">
-          <h2>Summary</h2>
-          {/* Display summary of selected item */}
-          <div className="item">
-            <img src={item.image} alt={item.name} />
-            <div>
-              <h3>{item.name}</h3>
-              <p>{item.description}</p>
-              <p>Price: SAR {item.price}</p>
-            </div>
+return (
+  <>
+    <div className="checkout-container">
+      <div className="summary">
+        <h2>Summary</h2>
+        {/* Display summary of selected item */}
+        <div className="item">
+          <img src={item.image} alt={item.name} />
+          <div>
+          <h4><strong>{type === 'event' ? item.eventName : item.tourName}</strong></h4>
+          <h4>Date: <strong>{new Date(type === 'event' ? item.date : item.startDate).toLocaleDateString()}</strong></h4>
+
+            <p>{item.description}</p>
+            <p>Price: SAR {item.price}</p>
           </div>
         </div>
-        <div className="checkout-table">
-          <h2>Checkout</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{item.name}</td>
-                <td>{item.price}</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <td>Subtotal</td>
-                <td>SAR{item.price}</td>
-              </tr>
-              <tr>
-                <td>Tax</td>
-                <td>SAR10</td> {/* Sample tax value */}
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td>SAR{item.price + 10}</td> {/* Sample total calculation */}
-              </tr>
-            </tfoot>
-          </table>
-          <button className="confirm-btn" onClick={handleCheckout}>Confirm Booking</button>
-        </div>
       </div>
-    </>
-  );
+      <div className="checkout-table">
+        <h2>Checkout</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>Subtotal</td>
+              <td>SAR{item.price}</td>
+            </tr>
+            <tr>
+              <td>Tax</td>
+              <td>SAR10</td> {/* Sample tax value */}
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>SAR{item.price + 10}</td> {/* Sample total calculation */}
+            </tr>
+          </tfoot>
+        </table>
+        <button className="confirm-btn" onClick={handleCheckout}>Confirm Booking</button>
+     
+      </div>
+    </div>
+  </>
+);
 };
 
 export default CheckoutPage;
